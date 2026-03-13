@@ -1,0 +1,33 @@
+@import "tailwindcss";
+
+/* Custom theme */
+@theme {
+  --color-primary: #1a365d;
+  --color-primary-light: #2c5282;
+  --color-primary-dark: #0d2137;
+  --color-accent: #4299e1;
+  --color-accent-light: #63b3ed;
+  --color-accent-dark: #3182ce;
+  --color-success: #48bb78;
+}
+
+/* Custom utilities */
+@utility btn {
+  @apply inline-block px-6 py-3 rounded-lg font-semibold transition-all duration-200;
+}
+
+@utility btn-primary {
+  @apply bg-accent text-white hover:bg-accent-dark;
+}
+
+@utility btn-secondary {
+  @apply bg-gray-200 text-primary hover:bg-gray-300;
+}
+
+@utility section-title {
+  @apply text-3xl md:text-4xl font-bold text-primary mb-4;
+}
+
+@utility section-subtitle {
+  @apply text-lg md:text-xl text-gray-600 mb-8;
+}
