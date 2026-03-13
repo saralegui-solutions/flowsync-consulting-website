@@ -15,22 +15,157 @@ description: Get in touch with FlowSync Consulting to discuss your NetSuite auto
         </div>
     </div>
 
+    <!-- Quick Contact Options -->
+    <div class="mb-12 md:mb-16">
+        <div class="grid md:grid-cols-2 gap-6 mb-8">
+            <!-- Schedule a Call -->
+            <a href="mailto:contact@flowsyncconsulting.com?subject=NetSuite Consultation Request" class="block bg-gradient-to-br from-primary to-primary-dark text-white rounded-lg p-8 hover:shadow-lg transition-all hover:scale-[1.02]">
+                <div class="text-4xl mb-4">📅</div>
+                <h3 class="text-xl font-bold mb-2">Schedule a Call</h3>
+                <p class="text-gray-300 text-sm mb-4">
+                    30-minute discovery call to discuss your NetSuite challenges and explore solutions.
+                </p>
+                <div class="inline-flex items-center text-accent-light font-semibold">
+                    Email to schedule
+                    <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
+                    </svg>
+                </div>
+            </a>
+
+            <!-- Send Message -->
+            <a href="#contact-form" class="block bg-white border-2 border-primary rounded-lg p-8 hover:shadow-lg transition-all hover:scale-[1.02]">
+                <div class="text-4xl mb-4">✉️</div>
+                <h3 class="text-xl font-bold text-primary mb-2">Send a Message</h3>
+                <p class="text-gray-600 text-sm mb-4">
+                    Share project details and budget. We'll respond within 24 hours with next steps.
+                </p>
+                <div class="inline-flex items-center text-accent font-semibold">
+                    Fill out form below
+                    <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                    </svg>
+                </div>
+            </a>
+        </div>
+
+        <!-- Contact Form -->
+        <div id="contact-form" class="max-w-2xl mx-auto bg-white rounded-lg shadow-sm border border-gray-200 p-8">
+            <h2 class="text-2xl md:text-3xl font-bold text-primary mb-6 text-center">Contact Form</h2>
+            <p class="text-gray-600 text-center mb-8">
+                Share your NetSuite challenges. We typically respond within 24 hours.
+            </p>
+
+            <form name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/contact-success/" class="space-y-6">
+                <!-- Honeypot field for spam protection -->
+                <input type="hidden" name="form-name" value="contact">
+                <div class="hidden">
+                    <label>Don't fill this out if you're human: <input name="bot-field"></label>
+                </div>
+
+                <!-- Name -->
+                <div>
+                    <label for="name" class="block text-sm font-semibold text-primary mb-2">
+                        Name <span class="text-red-500">*</span>
+                    </label>
+                    <input
+                        type="text"
+                        id="name"
+                        name="name"
+                        required
+                        class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-accent focus:border-transparent transition-all"
+                        placeholder="Your full name"
+                    >
+                </div>
+
+                <!-- Email -->
+                <div>
+                    <label for="email" class="block text-sm font-semibold text-primary mb-2">
+                        Email <span class="text-red-500">*</span>
+                    </label>
+                    <input
+                        type="email"
+                        id="email"
+                        name="email"
+                        required
+                        class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-accent focus:border-transparent transition-all"
+                        placeholder="you@company.com"
+                    >
+                </div>
+
+                <!-- Company -->
+                <div>
+                    <label for="company" class="block text-sm font-semibold text-primary mb-2">
+                        Company
+                    </label>
+                    <input
+                        type="text"
+                        id="company"
+                        name="company"
+                        class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-accent focus:border-transparent transition-all"
+                        placeholder="Your company name"
+                    >
+                </div>
+
+                <!-- Budget Range -->
+                <div>
+                    <label for="budget" class="block text-sm font-semibold text-primary mb-2">
+                        Estimated Budget Range
+                    </label>
+                    <select
+                        id="budget"
+                        name="budget"
+                        class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-accent focus:border-transparent transition-all bg-white"
+                    >
+                        <option value="">Select a range (optional)</option>
+                        <option value="under-10k">Under $10,000</option>
+                        <option value="10k-25k">$10,000 - $25,000</option>
+                        <option value="25k-50k">$25,000 - $50,000</option>
+                        <option value="50k-plus">$50,000+</option>
+                        <option value="not-sure">Not sure yet</option>
+                    </select>
+                </div>
+
+                <!-- Project Description -->
+                <div>
+                    <label for="message" class="block text-sm font-semibold text-primary mb-2">
+                        Tell us about your project <span class="text-red-500">*</span>
+                    </label>
+                    <textarea
+                        id="message"
+                        name="message"
+                        required
+                        rows="6"
+                        class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-accent focus:border-transparent transition-all resize-y"
+                        placeholder="What NetSuite challenges are you facing? What outcomes are you looking for?"
+                    ></textarea>
+                    <p class="text-xs text-gray-500 mt-2">
+                        Include: Current pain points, manual processes, integration needs, or performance issues.
+                    </p>
+                </div>
+
+                <!-- Submit Button -->
+                <div class="pt-4">
+                    <button
+                        type="submit"
+                        class="w-full btn btn-primary text-lg py-4 hover:scale-[1.02] transition-transform"
+                    >
+                        Send Message
+                    </button>
+                    <p class="text-xs text-gray-500 text-center mt-3">
+                        We'll respond within 24 hours on business days.
+                    </p>
+                </div>
+            </form>
+        </div>
+    </div>
+
     <div class="grid md:grid-cols-2 gap-8 md:gap-12">
         <!-- Contact Information -->
         <div>
-            <h2 class="text-xl md:text-2xl font-bold text-primary mb-6">Get in Touch</h2>
+            <h2 class="text-xl md:text-2xl font-bold text-primary mb-6">Contact Information</h2>
 
             <div class="space-y-6">
-                <div class="flex items-start gap-4">
-                    <div class="text-2xl">💬</div>
-                    <div>
-                        <h3 class="font-bold text-primary mb-1">Contact Us</h3>
-                        <p class="text-gray-600">
-                            Use the contact form below to send us a message about your NetSuite needs.
-                        </p>
-                    </div>
-                </div>
-
                 <div class="flex items-start gap-4">
                     <div class="text-2xl">📍</div>
                     <div>
@@ -38,6 +173,17 @@ description: Get in touch with FlowSync Consulting to discuss your NetSuite auto
                         <p class="text-gray-600">
                             Remote<br>
                             Serving clients nationwide
+                        </p>
+                    </div>
+                </div>
+
+                <div class="flex items-start gap-4">
+                    <div class="text-2xl">⏱️</div>
+                    <div>
+                        <h3 class="font-bold text-primary mb-1">Response Time</h3>
+                        <p class="text-gray-600">
+                            Within 24 hours on business days<br>
+                            Monday - Friday, 9 AM - 5 PM Pacific
                         </p>
                     </div>
                 </div>
