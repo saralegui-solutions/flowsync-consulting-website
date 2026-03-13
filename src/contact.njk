@@ -5,16 +5,16 @@ description: Get in touch with FlowSync Consulting to discuss your NetSuite auto
 ---
 
 <div class="max-w-4xl mx-auto">
-    <div class="text-center mb-12">
-        <p class="text-xl text-gray-700 leading-relaxed">
+    <div class="text-center mb-8 md:mb-12">
+        <p class="text-lg md:text-xl text-gray-700 leading-relaxed">
             Let's discuss your NetSuite challenges and explore solutions that deliver measurable results. Every project starts with understanding your unique needs.
         </p>
     </div>
 
-    <div class="grid md:grid-cols-2 gap-12">
+    <div class="grid md:grid-cols-2 gap-8 md:gap-12">
         <!-- Contact Information -->
         <div>
-            <h2 class="text-2xl font-bold text-primary mb-6">Get in Touch</h2>
+            <h2 class="text-xl md:text-2xl font-bold text-primary mb-6">Get in Touch</h2>
 
             <div class="space-y-6">
                 <div class="flex items-start gap-4">
@@ -42,17 +42,32 @@ description: Get in touch with FlowSync Consulting to discuss your NetSuite auto
                     <div>
                         <h3 class="font-bold text-primary mb-1">Location</h3>
                         <p class="text-gray-600">
-                            Remote ({{ site.address.city }}, {{ site.address.state }})<br>
-                            Serving clients nationwide
+                            {{ site.address.city }}, {{ site.address.state }}<br>
+                            Remote work with clients nationwide
                         </p>
                     </div>
+                </div>
+            </div>
+
+            <div class="mt-10 p-6 bg-gray-50 rounded-lg">
+                <h3 class="font-bold text-primary mb-4">Business Information</h3>
+                <div class="space-y-2">
+                    <p class="text-sm text-gray-600">
+                        <strong>Legal Entity:</strong> Saralegui Solutions LLC
+                    </p>
+                    <p class="text-sm text-gray-600">
+                        <strong>DBA:</strong> FlowSync Consulting
+                    </p>
+                    <p class="text-sm text-gray-600">
+                        <strong>Location:</strong> {{ site.address.city }}, {{ site.address.state }}, {{ site.address.country }}
+                    </p>
                 </div>
             </div>
         </div>
 
         <!-- What to Expect -->
         <div>
-            <h2 class="text-2xl font-bold text-primary mb-6">What to Expect</h2>
+            <h2 class="text-xl md:text-2xl font-bold text-primary mb-6">What to Expect</h2>
 
             <div class="space-y-6">
                 <div class="flex items-start gap-4">
@@ -106,8 +121,8 @@ description: Get in touch with FlowSync Consulting to discuss your NetSuite auto
     </div>
 
     <!-- FAQ Section -->
-    <section class="mt-16">
-        <h2 class="text-3xl font-bold text-primary mb-8 text-center">Common Questions</h2>
+    <section class="mt-12 md:mt-16">
+        <h2 class="text-2xl md:text-3xl font-bold text-primary mb-6 md:mb-8 text-center">Common Questions</h2>
         <div class="space-y-4">
             <details class="bg-white border border-gray-200 rounded-lg p-6">
                 <summary class="font-bold text-primary cursor-pointer">What industries do you work with?</summary>
@@ -147,8 +162,8 @@ description: Get in touch with FlowSync Consulting to discuss your NetSuite auto
     </section>
 
     <!-- Final CTA -->
-    <section class="mt-12 bg-gradient-to-br from-primary to-primary-dark text-white rounded-lg p-8 text-center">
-        <h2 class="text-2xl font-bold mb-4">Let's Build Something Great</h2>
+    <section class="mt-8 md:mt-12 bg-gradient-to-br from-primary to-primary-dark text-white rounded-lg p-6 md:p-8 text-center">
+        <h2 class="text-xl md:text-2xl font-bold mb-4">Let's Build Something Great</h2>
         <p class="text-gray-300 mb-6">
             Reach out today to discuss your NetSuite automation needs.
         </p>
