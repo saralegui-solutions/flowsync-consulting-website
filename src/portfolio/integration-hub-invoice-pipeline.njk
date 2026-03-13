@@ -1,0 +1,154 @@
+---
+layout: layouts/case-study.njk
+title: Enterprise System Integration Platform
+tagline: Multi-stage pipeline connecting external billing systems to NetSuite -- 150 hours/month of manual entry eliminated
+description: Integration platform processing 3,000+ monthly invoices with 1,043% ROI
+category: Integration
+industry: Financial Services
+permalink: /portfolio/integration-hub-invoice-pipeline/
+tags: portfolio
+order: 3
+metrics:
+  - value: "95%"
+    label: "Reduction in Manual Entry"
+  - value: "15 min"
+    label: "Processing Time (was 5-7 days)"
+  - value: "3,000+"
+    label: "Monthly Invoice Capacity"
+  - value: "1,043%"
+    label: "First-Year ROI"
+techTags:
+  - SuiteScript 2.1
+  - RESTlet
+  - User Event Script
+  - Map/Reduce
+  - Workflow Action
+  - Custom Records
+  - N/https
+  - N/record (Dynamic Mode)
+  - N/render (PDF)
+  - N/email
+  - JSON Processing
+  - Record Segmentation
+---
+
+<section class="mb-10">
+<h2 class="text-2xl font-bold text-primary mb-4 pb-2 border-b-2 border-gray-200">The Challenge</h2>
+<p class="mb-4">A financial services company ran a dual-system operation: an external platform tracked all client work and generated billing data, while NetSuite handled accounting. Invoices had to be manually recreated in NetSuite -- 200-300 per month, each taking 30-60 minutes of data entry.</p>
+
+<div class="grid grid-cols-2 md:grid-cols-3 gap-4 my-6">
+    <div class="bg-white rounded-lg p-5 text-center shadow-sm border-t-4 border-accent">
+        <div class="text-3xl font-bold text-primary">150 hrs</div>
+        <div class="text-xs text-gray-600 mt-1">Monthly Manual Entry</div>
+    </div>
+    <div class="bg-white rounded-lg p-5 text-center shadow-sm border-t-4 border-accent">
+        <div class="text-3xl font-bold text-primary">25%</div>
+        <div class="text-xs text-gray-600 mt-1">Invoice Error Rate</div>
+    </div>
+    <div class="bg-white rounded-lg p-5 text-center shadow-sm border-t-4 border-accent">
+        <div class="text-3xl font-bold text-primary">5-7 days</div>
+        <div class="text-xs text-gray-600 mt-1">Processing Delay</div>
+    </div>
+</div>
+</section>
+
+<section class="mb-10">
+<h2 class="text-2xl font-bold text-primary mb-4 pb-2 border-b-2 border-gray-200">The Solution: Multi-Stage Processing Pipeline</h2>
+
+<div class="bg-gray-900 text-blue-300 p-5 rounded-lg font-mono text-sm overflow-x-auto whitespace-pre my-4">Stage 1: Data Reception (RESTlet)
+External System --POST--> NetSuite RESTlet
+- Validate JSON structure
+- Create tracking record (unique ID)
+- Segment large invoices (100 lines each)
+- Return confirmation (<2 seconds)
+          |
+          v
+Stage 2: Automated Validation (User Event)
+- Trigger on tracking record creation
+- Validate customer references exist
+- Parse complex line item structures
+- Mark as "Ready for Processing"
+          |
+          v
+Stage 3: Batch Invoice Creation (Map/Reduce)
+- Runs every 15 minutes
+- Parallel processing of validated invoices
+- Intelligent line item consolidation:
+    - By Service Line
+    - By Resource Pool
+    - By Item
+    - No consolidation (full detail)
+- Links created invoices to tracking records
+          |
+          v
+Stage 4: Automated Delivery (Workflow)
+- Generate branded PDF invoice
+- Collect recipients from customer + invoice
+- Send email with PDF attachment
+- Record in communication history</div>
+
+<h3 class="text-xl font-semibold text-primary-light mt-6 mb-3">Intelligent Failure Handling</h3>
+<div class="bg-gray-900 text-blue-300 p-5 rounded-lg font-mono text-sm overflow-x-auto whitespace-pre my-4">Status-Driven State Machine:
+
+Needs Parsing --> Pending --> Processed
+      |              |
+      v              v
+    Error <---------+
+      |
+(Admin resets status to retry)</div>
+
+<h3 class="text-xl font-semibold text-primary-light mt-6 mb-3">Key Engineering Patterns</h3>
+<table class="w-full text-sm my-4">
+    <thead>
+        <tr class="bg-gray-100">
+            <th class="p-3 text-left font-semibold text-primary-light border-b-2 border-gray-200">Challenge</th>
+            <th class="p-3 text-left font-semibold text-primary-light border-b-2 border-gray-200">Solution</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr class="border-b border-gray-200">
+            <td class="p-3">Invoices with 500+ line items hit field size limits</td>
+            <td class="p-3">Automatic segmentation into 100-line chunks with parallel processing and reassembly</td>
+        </tr>
+        <tr class="border-b border-gray-200">
+            <td class="p-3">Processing 300 invoices would timeout in single script</td>
+            <td class="p-3">Multi-stage pipeline with independent governance budgets per stage</td>
+        </tr>
+        <tr class="border-b border-gray-200">
+            <td class="p-3">External system occasionally retries requests (duplicates)</td>
+            <td class="p-3">Unique ID tracking with duplicate detection before processing</td>
+        </tr>
+        <tr class="border-b border-gray-200">
+            <td class="p-3">Some invoices fail while others succeed</td>
+            <td class="p-3">Status-driven state machine with independent processing and retry</td>
+        </tr>
+        <tr class="border-b border-gray-200">
+            <td class="p-3">Different consolidation rules for different invoice types</td>
+            <td class="p-3">Configuration field on invoice controls consolidation logic dynamically</td>
+        </tr>
+    </tbody>
+</table>
+</section>
+
+<section class="mb-10">
+<h2 class="text-2xl font-bold text-primary mb-4 pb-2 border-b-2 border-gray-200">Value Delivered</h2>
+
+<div class="grid grid-cols-2 md:grid-cols-4 gap-4 my-6">
+    <div class="bg-white rounded-lg p-5 text-center shadow-sm border-t-4 border-accent">
+        <div class="text-3xl font-bold text-primary">$240K+</div>
+        <div class="text-xs text-gray-600 mt-1">Annual Value</div>
+    </div>
+    <div class="bg-white rounded-lg p-5 text-center shadow-sm border-t-4 border-accent">
+        <div class="text-3xl font-bold text-primary">&lt;1%</div>
+        <div class="text-xs text-gray-600 mt-1">Error Rate (was 25%)</div>
+    </div>
+    <div class="bg-white rounded-lg p-5 text-center shadow-sm border-t-4 border-accent">
+        <div class="text-3xl font-bold text-primary">10x</div>
+        <div class="text-xs text-gray-600 mt-1">Capacity Increase</div>
+    </div>
+    <div class="bg-white rounded-lg p-5 text-center shadow-sm border-t-4 border-accent">
+        <div class="text-3xl font-bold text-primary">$200K+</div>
+        <div class="text-xs text-gray-600 mt-1">Faster Collections</div>
+    </div>
+</div>
+</section>

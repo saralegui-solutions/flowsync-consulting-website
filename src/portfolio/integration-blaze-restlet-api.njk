@@ -1,0 +1,121 @@
+---
+layout: layouts/case-study.njk
+title: Field Service Management Integration API
+tagline: 6-endpoint RESTlet suite connecting field service operations to NetSuite ERP
+description: Complete API suite covering the entire transaction lifecycle from customers to payments
+category: Integration
+industry: Insurance / Claims Processing
+permalink: /portfolio/integration-blaze-restlet-api/
+tags: portfolio
+order: 4
+metrics:
+  - value: "6"
+    label: "RESTlet Endpoints"
+  - value: "Full"
+    label: "Transaction Lifecycle"
+  - value: "OAuth 1.0"
+    label: "Authentication"
+  - value: "100%"
+    label: "API Documentation"
+techTags:
+  - SuiteScript 2.1
+  - RESTlet (6 Endpoints)
+  - OAuth 1.0
+  - N/record
+  - N/search
+  - N/error
+  - JSON Processing
+  - External ID Matching
+  - Postman Collection
+  - Jest Testing
+---
+
+<section class="mb-10">
+<h2 class="text-2xl font-bold text-primary mb-4 pb-2 border-b-2 border-gray-200">The Challenge</h2>
+<p class="mb-4">An insurance/claims processing company ran field service operations in a specialized external platform. All financial transactions (customers, jobs, sales orders, fulfillments, invoices, payments) had to be manually recreated in NetSuite. The two systems were completely disconnected.</p>
+</section>
+
+<section class="mb-10">
+<h2 class="text-2xl font-bold text-primary mb-4 pb-2 border-b-2 border-gray-200">The Solution: Complete API Suite</h2>
+<p class="mb-4">We built a comprehensive RESTlet API that maps the entire transaction lifecycle from field service to ERP.</p>
+
+<div class="bg-gray-900 text-blue-300 p-5 rounded-lg font-mono text-sm overflow-x-auto whitespace-pre my-4">Field Service System
+     |
+[OAuth 1.0 Authentication]
+     |
++----+----+----+----+----+----+
+|    |    |    |    |    |    |
+v    v    v    v    v    v    v
+
+1. Customer     2. Job         3. Sales Order
+POST /customer  POST /job      POST /salesorder
+Create/Update   Create claim   Create work order
+Upsert mode     Link to cust   Line items
+     |              |              |
+     v              v              v
+4. Fulfillment  5. Invoice     6. Payment
+POST /fulfill   POST /invoice  POST /payment
+Mark complete   Generate bill  Apply payment
+Update status   Calculate tax  Close balance</div>
+
+<h3 class="text-xl font-semibold text-primary-light mt-6 mb-3">API Design Principles</h3>
+<table class="w-full text-sm my-4">
+    <thead>
+        <tr class="bg-gray-100">
+            <th class="p-3 text-left font-semibold text-primary-light border-b-2 border-gray-200">Principle</th>
+            <th class="p-3 text-left font-semibold text-primary-light border-b-2 border-gray-200">Implementation</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr class="border-b border-gray-200">
+            <td class="p-3">Upsert by Default</td>
+            <td class="p-3">External ID-based matching; create if new, update if exists</td>
+        </tr>
+        <tr class="border-b border-gray-200">
+            <td class="p-3">Idempotent Operations</td>
+            <td class="p-3">Unique ID tracking prevents duplicate records from retries</td>
+        </tr>
+        <tr class="border-b border-gray-200">
+            <td class="p-3">Comprehensive Validation</td>
+            <td class="p-3">JSON structure validation, required field checks, reference validation</td>
+        </tr>
+        <tr class="border-b border-gray-200">
+            <td class="p-3">Detailed Error Responses</td>
+            <td class="p-3">Structured JSON errors with field-level messages and NetSuite record IDs</td>
+        </tr>
+        <tr class="border-b border-gray-200">
+            <td class="p-3">Environment Portability</td>
+            <td class="p-3">SDF script IDs work across sandbox and production</td>
+        </tr>
+    </tbody>
+</table>
+</section>
+
+<section class="mb-10">
+<h2 class="text-2xl font-bold text-primary mb-4 pb-2 border-b-2 border-gray-200">Professional Deliverables</h2>
+
+<div class="bg-white rounded-lg p-6 mb-4 shadow-sm border-l-4 border-accent">
+    <h4 class="font-bold text-primary mb-2">Complete API Reference Documentation</h4>
+    <p>Every endpoint documented with request/response schemas, field mappings, authentication headers, error codes, and example payloads. Versioned and maintained as the integration evolves.</p>
+</div>
+
+<div class="bg-white rounded-lg p-6 mb-4 shadow-sm border-l-4 border-accent">
+    <h4 class="font-bold text-primary mb-2">Postman Test Collection</h4>
+    <p>Pre-built Postman collection with environment configurations for both sandbox and production. Includes sample payloads for every endpoint, enabling the external team to test independently.</p>
+</div>
+</section>
+
+<section class="mb-10">
+<h2 class="text-2xl font-bold text-primary mb-4 pb-2 border-b-2 border-gray-200">Value Delivered</h2>
+
+<div class="bg-white rounded-lg p-6 mb-4 shadow-sm border-l-4 border-green-400">
+    <h4 class="font-bold text-primary mb-2">System Unification</h4>
+    <ul class="list-disc pl-5 space-y-1">
+        <li>Complete transaction lifecycle connected: Customer to Job to SO to Fulfillment to Invoice to Payment</li>
+        <li>Real-time synchronization replaces manual data entry</li>
+        <li>Single source of truth for financial data</li>
+        <li>External ID-based matching ensures data integrity</li>
+        <li>Professional API documentation enables independent integration by external teams</li>
+    </ul>
+</div>
+</section>

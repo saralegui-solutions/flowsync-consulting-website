@@ -4,8 +4,18 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addPassthroughCopy("src/js");
   eleventyConfig.addPassthroughCopy("src/assets");
 
-  // Copy portfolio directory as-is (existing HTML files)
-  eleventyConfig.addPassthroughCopy({"../portfolio": "portfolio"});
+  // Copy demo framework assets (for interactive demos)
+  eleventyConfig.addPassthroughCopy({"../portfolio/demo-framework": "portfolio/demo-framework"});
+
+  // Copy demo.html files for case studies that have them
+  eleventyConfig.addPassthroughCopy({"../portfolio/suitelet-commission-reporting/demo.html": "portfolio/suitelet-commission-reporting/demo.html"});
+  eleventyConfig.addPassthroughCopy({"../portfolio/suitelet-transaction-lookup/demo.html": "portfolio/suitelet-transaction-lookup/demo.html"});
+  eleventyConfig.addPassthroughCopy({"../portfolio/suitelet-board-repair-tracking/demo.html": "portfolio/suitelet-board-repair-tracking/demo.html"});
+
+  // Create portfolio collection
+  eleventyConfig.addCollection("portfolio", function(collectionApi) {
+    return collectionApi.getFilteredByTag("portfolio");
+  });
 
   // Configure directories
   return {

@@ -1,0 +1,110 @@
+---
+layout: layouts/case-study.njk
+title: Professional Document Generation System
+tagline: Branded PDF invoices with intelligent payment integration -- 35% increase in autopay enrollment
+description: Dynamic PDF generation system delivering 781% ROI with branded invoices
+category: Document
+industry: Financial Services
+permalink: /portfolio/pdf-template-invoice-generation/
+tags: portfolio
+order: 5
+metrics:
+  - value: "781%"
+    label: "First-Year ROI"
+  - value: "8 days"
+    label: "Faster Payment Cycles"
+  - value: "40 hrs"
+    label: "Monthly Time Saved"
+  - value: "+35%"
+    label: "AutoPay Enrollment"
+techTags:
+  - SuiteScript 2.1
+  - Custom Suitelet
+  - Workflow Action
+  - N/render (HTML-to-PDF)
+  - N/email
+  - N/https
+  - N/file
+  - HTML/CSS Templates
+  - Data Sources Pattern
+  - JavaScript ES6
+---
+
+<section class="mb-10">
+<h2 class="text-2xl font-bold text-primary mb-4 pb-2 border-b-2 border-gray-200">The Challenge</h2>
+<p class="mb-4">NetSuite's default invoice PDFs looked generic and unprofessional. Surcharge line items appeared without explanation. Payment required multiple steps. Staff manually generated and emailed each PDF -- 300+ per month.</p>
+</section>
+
+<section class="mb-10">
+<h2 class="text-2xl font-bold text-primary mb-4 pb-2 border-b-2 border-gray-200">The Solution</h2>
+
+<div class="bg-white rounded-lg p-6 mb-4 shadow-sm border-l-4 border-accent">
+    <h4 class="font-bold text-primary mb-2">Dynamic HTML-to-PDF Engine</h4>
+    <p>Built a Suitelet-based PDF generator with GET endpoint for browser preview and POST endpoint for downloadable PDF. The engine dynamically renders branded invoices with intelligent surcharge display, payment links, and conditional formatting based on customer attributes.</p>
+</div>
+
+<div class="bg-white rounded-lg p-6 mb-4 shadow-sm border-l-4 border-accent">
+    <h4 class="font-bold text-primary mb-2">Smart Line Item Rendering</h4>
+    <p>Separates regular items from surcharge items automatically. Groups line items by service line, resource pool, or item (configurable per invoice). Shows descriptive headings instead of internal codes. Adjusts layout based on line count.</p>
+</div>
+
+<div class="bg-white rounded-lg p-6 mb-4 shadow-sm border-l-4 border-accent">
+    <h4 class="font-bold text-primary mb-2">Embedded Payment Integration</h4>
+    <p>Environment-aware payment links (sandbox vs. production). Customer-specific pre-filled payment portal. One-click autopay enrollment links embedded directly in the PDF with conditional display based on customer settings.</p>
+</div>
+
+<div class="bg-white rounded-lg p-6 mb-4 shadow-sm border-l-4 border-accent">
+    <h4 class="font-bold text-primary mb-2">Automated Email Delivery</h4>
+    <p>Workflow Action triggers on invoice approval. Generates PDF via HTTPS call to Suitelet. Collects recipients from customer and invoice fields (primary, CC, BCC). Sends with template-based messaging and records in communication history.</p>
+</div>
+</section>
+
+<section class="mb-10">
+<h2 class="text-2xl font-bold text-primary mb-4 pb-2 border-b-2 border-gray-200">Before & After</h2>
+
+<div class="grid md:grid-cols-2 gap-4 my-4">
+    <div class="bg-red-50 border border-red-200 rounded-lg p-4">
+        <h4 class="font-bold text-red-900 mb-2">Before: Default NetSuite PDF</h4>
+        <ul class="list-disc pl-5 space-y-1 text-red-800">
+            <li>Generic layout with no branding</li>
+            <li>Surcharge appears without explanation</li>
+            <li>No payment links</li>
+            <li>Manual generation and emailing</li>
+            <li>50+ support calls/month about fees</li>
+        </ul>
+    </div>
+    <div class="bg-green-50 border border-green-200 rounded-lg p-4">
+        <h4 class="font-bold text-green-900 mb-2">After: Branded Dynamic PDF</h4>
+        <ul class="list-disc pl-5 space-y-1 text-green-800">
+            <li>Professional company branding</li>
+            <li>Clear surcharge messaging with autopay CTA</li>
+            <li>One-click payment and enrollment links</li>
+            <li>Fully automated generation and delivery</li>
+            <li>Support calls dropped to 5/month</li>
+        </ul>
+    </div>
+</div>
+</section>
+
+<section class="mb-10">
+<h2 class="text-2xl font-bold text-primary mb-4 pb-2 border-b-2 border-gray-200">Value Delivered</h2>
+
+<div class="grid grid-cols-2 md:grid-cols-4 gap-4 my-6">
+    <div class="bg-white rounded-lg p-5 text-center shadow-sm border-t-4 border-accent">
+        <div class="text-3xl font-bold text-primary">$119K</div>
+        <div class="text-xs text-gray-600 mt-1">Annual Value</div>
+    </div>
+    <div class="bg-white rounded-lg p-5 text-center shadow-sm border-t-4 border-accent">
+        <div class="text-3xl font-bold text-primary">90%</div>
+        <div class="text-xs text-gray-600 mt-1">Fewer Support Calls</div>
+    </div>
+    <div class="bg-white rounded-lg p-5 text-center shadow-sm border-t-4 border-accent">
+        <div class="text-3xl font-bold text-primary">45%</div>
+        <div class="text-xs text-gray-600 mt-1">One-Click Payment Adoption</div>
+    </div>
+    <div class="bg-white rounded-lg p-5 text-center shadow-sm border-t-4 border-accent">
+        <div class="text-3xl font-bold text-primary">$150K+</div>
+        <div class="text-xs text-gray-600 mt-1">Faster Cash Availability</div>
+    </div>
+</div>
+</section>

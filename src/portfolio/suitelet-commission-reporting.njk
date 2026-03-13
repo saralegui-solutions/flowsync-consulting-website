@@ -1,0 +1,251 @@
+---
+layout: layouts/case-study.njk
+title: Sales Performance Intelligence Platform
+tagline: Real-time commission reporting that replaced 40 hours of manual Excel work per month
+description: Interactive commission platform delivering 8.5x ROI with real-time performance visibility
+category: Suitelet
+industry: Distribution / Manufacturing
+permalink: /portfolio/suitelet-commission-reporting/
+tags: portfolio
+order: 6
+metrics:
+  - value: "8.5x"
+    label: "First-Year ROI"
+  - value: "92%"
+    label: "Page Load Improvement"
+  - value: "43,000+"
+    label: "Transactions Processed Nightly"
+  - value: "100%"
+    label: "User Adoption"
+techTags:
+  - SuiteScript 2.1
+  - Custom Suitelet
+  - Map/Reduce
+  - Client Script
+  - Custom Records
+  - N/search
+  - N/ui/serverWidget
+  - N/file (Excel Export)
+  - Config-Driven Pattern
+  - Builder Pattern
+  - Jest Testing (25+ tests)
+---
+
+<section class="mb-10">
+<h2 class="text-2xl font-bold text-primary mb-4 pb-2 border-b-2 border-gray-200">The Challenge</h2>
+<p class="mb-4">A window products distribution company with $47M in annual revenue was managing commission tracking entirely through manual Excel workflows. Sales leadership had no real-time visibility into territory performance.</p>
+
+<div class="bg-white rounded-lg p-6 mb-4 shadow-sm border-l-4 border-red-400">
+    <h4 class="font-bold text-primary mb-2">Manual Commission Calculations</h4>
+    <p>Finance spent 40+ hours per month manually calculating commissions across territories. Complex Excel formulas were prone to errors, leading to disputes and delayed payments.</p>
+</div>
+
+<div class="bg-white rounded-lg p-6 mb-4 shadow-sm border-l-4 border-red-400">
+    <h4 class="font-bold text-primary mb-2">No Year-Over-Year Visibility</h4>
+    <p>Leadership could not identify which territories were growing vs. declining. Strategic decisions were based on intuition rather than data. Growth patterns across 1,320+ customer accounts were invisible.</p>
+</div>
+
+<div class="bg-white rounded-lg p-6 mb-4 shadow-sm border-l-4 border-red-400">
+    <h4 class="font-bold text-primary mb-2">Goal Achievement Tracking Was Impossible</h4>
+    <p>Goals set at the beginning of the year disappeared into spreadsheets. Territory managers could not track progress mid-month. Course corrections happened too late -- after month-end when the data finally arrived.</p>
+</div>
+
+<div class="grid grid-cols-2 md:grid-cols-3 gap-4 my-6">
+    <div class="bg-white rounded-lg p-5 text-center shadow-sm border-t-4 border-accent">
+        <div class="text-3xl font-bold text-primary">40+</div>
+        <div class="text-xs text-gray-600 mt-1">Hours/Month Manual Work</div>
+    </div>
+    <div class="bg-white rounded-lg p-5 text-center shadow-sm border-t-4 border-accent">
+        <div class="text-3xl font-bold text-primary">3-5</div>
+        <div class="text-xs text-gray-600 mt-1">Day Delay for Reports</div>
+    </div>
+    <div class="bg-white rounded-lg p-5 text-center shadow-sm border-t-4 border-accent">
+        <div class="text-3xl font-bold text-primary">$120K</div>
+        <div class="text-xs text-gray-600 mt-1">Annual Cost of Waste</div>
+    </div>
+</div>
+</section>
+
+<section class="mb-10">
+<h2 class="text-2xl font-bold text-primary mb-4 pb-2 border-b-2 border-gray-200">The Solution</h2>
+<p class="mb-4">We built an enterprise-grade commission intelligence platform directly inside NetSuite, giving every stakeholder instant access to the data they needed.</p>
+
+<div class="bg-white rounded-lg p-6 mb-4 shadow-sm border-l-4 border-accent">
+    <h4 class="font-bold text-primary mb-2">Interactive Pivot Table Reports</h4>
+    <p>Built a multi-view Suitelet with interactive pivot tables: 5 territories x 12 months x 6 metrics per cell. Users see prior year revenue, growth percentage, current year revenue, goal amounts, percent-to-goal, and projected end-of-month figures -- all at a glance with color-coded achievement indicators.</p>
+</div>
+
+<div class="bg-white rounded-lg p-6 mb-4 shadow-sm border-l-4 border-accent">
+    <h4 class="font-bold text-primary mb-2">Automated Nightly Data Pipeline</h4>
+    <p>Developed a Map/Reduce batch job that processes 43,000+ transactions every night, extracting data from native NetSuite invoices and credit memos and transforming it into an optimized reporting format. No manual data entry required.</p>
+</div>
+
+<div class="bg-white rounded-lg p-6 mb-4 shadow-sm border-l-4 border-accent">
+    <h4 class="font-bold text-primary mb-2">Configuration-Driven Architecture</h4>
+    <p>Designed a reusable config-driven column system where column definitions live in separate configuration files. Adding, removing, or reordering columns requires zero code changes to the form builder. This pattern is now reusable across all future Suitelet projects.</p>
+</div>
+
+<div class="bg-white rounded-lg p-6 mb-4 shadow-sm border-l-4 border-accent">
+    <h4 class="font-bold text-primary mb-2">Account-Level Drill-Down</h4>
+    <p>Created cascading filters that let territory managers drill from territory-level summaries down to individual customer accounts. Over 1,320 territory-account combinations are tracked automatically.</p>
+</div>
+
+<div class="my-6">
+    <a href="/portfolio/suitelet-commission-reporting/demo.html" class="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-purple-600 to-purple-800 text-white font-bold rounded-lg hover:opacity-90 transition-opacity">
+        View Interactive Demo
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+        </svg>
+    </a>
+</div>
+</section>
+
+<section class="mb-10">
+<h2 class="text-2xl font-bold text-primary mb-4 pb-2 border-b-2 border-gray-200">Technical Architecture</h2>
+
+<div class="bg-gray-900 text-blue-300 p-5 rounded-lg font-mono text-sm overflow-x-auto whitespace-pre my-4">                Configuration Layer
+                (Column Definitions)
+                       |
+    +------------------+------------------+
+    |                  |                  |
+YoY Pivot Config   Account Config    Goals Config
+    |                  |                  |
+    +------------------+------------------+
+                       |
+                Rendering Layer
+           (Config-Driven Form Builder)
+                       |
+    +------------------+------------------+
+    |                  |                  |
+Suitelet UI        CSV Export       Client Script
+(Server Widget)    (File Module)    (Dynamic Filters)
+                       |
+                  Data Layer
+           (Custom Records + Search)
+                       |
+              Map/Reduce Pipeline
+         (43K transactions nightly)</div>
+
+<h3 class="text-xl font-semibold text-primary-light mt-6 mb-3">Performance Engineering</h3>
+<table class="w-full text-sm my-4">
+    <thead>
+        <tr class="bg-gray-100">
+            <th class="p-3 text-left font-semibold text-primary-light border-b-2 border-gray-200">Challenge</th>
+            <th class="p-3 text-left font-semibold text-primary-light border-b-2 border-gray-200">Solution</th>
+            <th class="p-3 text-left font-semibold text-primary-light border-b-2 border-gray-200">Result</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr class="border-b border-gray-200">
+            <td class="p-3">9-second page load with 43K records</td>
+            <td class="p-3">Three-layer optimization: selection prompt, server-side filtering, cascading filters</td>
+            <td class="p-3">0.7-second load (92% improvement)</td>
+        </tr>
+        <tr class="border-b border-gray-200">
+            <td class="p-3">NetSuite polymorphic getValue() types</td>
+            <td class="p-3">Helper functions to normalize object/array/string variations</td>
+            <td class="p-3">Robust, maintainable code</td>
+        </tr>
+        <tr class="border-b border-gray-200">
+            <td class="p-3">Negative prior year sales breaking formulas</td>
+            <td class="p-3">Inverted formula logic with edge case handling</td>
+            <td class="p-3">Accurate calculations in all scenarios</td>
+        </tr>
+        <tr class="border-b border-gray-200">
+            <td class="p-3">Governance consumption on batch processing</td>
+            <td class="p-3">Incremental sync (process only changed records)</td>
+            <td class="p-3">85% governance reduction</td>
+        </tr>
+    </tbody>
+</table>
+</section>
+
+<section class="mb-10">
+<h2 class="text-2xl font-bold text-primary mb-4 pb-2 border-b-2 border-gray-200">Value Delivered</h2>
+
+<div class="grid grid-cols-2 md:grid-cols-4 gap-4 my-6">
+    <div class="bg-white rounded-lg p-5 text-center shadow-sm border-t-4 border-accent">
+        <div class="text-3xl font-bold text-primary">35 hrs</div>
+        <div class="text-xs text-gray-600 mt-1">Monthly Time Saved</div>
+    </div>
+    <div class="bg-white rounded-lg p-5 text-center shadow-sm border-t-4 border-accent">
+        <div class="text-3xl font-bold text-primary">$105K</div>
+        <div class="text-xs text-gray-600 mt-1">Annual Hard Savings</div>
+    </div>
+    <div class="bg-white rounded-lg p-5 text-center shadow-sm border-t-4 border-accent">
+        <div class="text-3xl font-bold text-primary">90%</div>
+        <div class="text-xs text-gray-600 mt-1">Fewer Commission Disputes</div>
+    </div>
+    <div class="bg-white rounded-lg p-5 text-center shadow-sm border-t-4 border-accent">
+        <div class="text-3xl font-bold text-primary">12%</div>
+        <div class="text-xs text-gray-600 mt-1">Goal Achievement Improvement</div>
+    </div>
+</div>
+
+<div class="bg-white rounded-lg p-6 mb-4 shadow-sm border-l-4 border-green-400">
+    <h4 class="font-bold text-primary mb-2">Immediate Impact (Month 1)</h4>
+    <ul class="list-disc pl-5 space-y-1">
+        <li>Finance team reclaimed 35 hours/month (87% reduction in manual work)</li>
+        <li>Territory managers got instant access to performance data (previously a 3-5 day wait)</li>
+        <li>Leadership made strategic decisions in minutes instead of days</li>
+    </ul>
+</div>
+
+<div class="bg-white rounded-lg p-6 mb-4 shadow-sm border-l-4 border-green-400">
+    <h4 class="font-bold text-primary mb-2">Long-Term Transformation</h4>
+    <ul class="list-disc pl-5 space-y-1">
+        <li>Commission disputes dropped 90% through transparency</li>
+        <li>Goal achievement improved 12% as visibility drove accountability</li>
+        <li>100% adoption across all territory managers with zero training required</li>
+        <li>Foundation enabled future commission tier system expansion</li>
+    </ul>
+</div>
+</section>
+
+<section class="mb-10">
+<h2 class="text-2xl font-bold text-primary mb-4 pb-2 border-b-2 border-gray-200">The Reusable Pattern: Config-Driven Suitelets</h2>
+<p class="mb-4">One of the most valuable outcomes of this project was the development of a reusable architectural pattern. The config-driven form builder separates what to display from how to display it.</p>
+
+<div class="grid md:grid-cols-2 gap-4 my-4">
+    <div class="bg-red-50 border border-red-200 rounded-lg p-4">
+        <h4 class="font-bold text-red-900 mb-2">Before: Hardcoded Columns</h4>
+        <ul class="list-disc pl-5 space-y-1 text-red-800">
+            <li>150+ lines of repetitive code for 11 columns</li>
+            <li>UI definition mixed with data mapping</li>
+            <li>Every new column required modifying core code</li>
+            <li>New projects required forking entire methods</li>
+        </ul>
+    </div>
+    <div class="bg-green-50 border border-green-200 rounded-lg p-4">
+        <h4 class="font-bold text-green-900 mb-2">After: Configuration Objects</h4>
+        <ul class="list-disc pl-5 space-y-1 text-green-800">
+            <li>Column definitions in separate config file (~40 lines per view)</li>
+            <li>Generic form builder (~150 lines, reusable across projects)</li>
+            <li>Adding columns = adding a config object</li>
+            <li>Same rendering logic works for any column configuration</li>
+        </ul>
+    </div>
+</div>
+
+<div class="bg-gray-900 text-gray-200 p-5 rounded-lg font-mono text-sm overflow-x-auto my-4">
+<pre>// Column configuration example
+const COMMISSION_COLUMNS = [
+    {
+        id: 'custpage_territory',
+        label: 'Territory',
+        type: serverWidget.FieldType.TEXT,
+        valueAccessor: 'territory'
+    },
+    {
+        id: 'custpage_variance',
+        label: 'Variance',
+        type: serverWidget.FieldType.CURRENCY,
+        valueAccessor: (result) => {
+            const actual = parseFloat(result.actualRevenue) || 0;
+            const goal = parseFloat(result.goalAmount) || 0;
+            return (actual - goal).toFixed(2);
+        }
+    }
+];</pre>
+</div>
+</section>

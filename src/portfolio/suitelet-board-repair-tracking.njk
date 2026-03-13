@@ -1,0 +1,189 @@
+---
+layout: layouts/case-study.njk
+title: Equipment Repair Management System
+tagline: Multi-mode Suitelet replacing paper-based repair tracking with end-to-end digital workflow
+description: Repair tracking system with 3 modes delivering 100% digital tracking and 80% faster billing
+category: Suitelet
+industry: Industrial Equipment
+permalink: /portfolio/suitelet-board-repair-tracking/
+tags: portfolio
+order: 7
+metrics:
+  - value: "3 Modes"
+    label: "Single Suitelet"
+  - value: "11"
+    label: "Custom Record Fields"
+  - value: "25"
+    label: "Unit Tests Passing"
+  - value: "100%"
+    label: "Test Coverage"
+techTags:
+  - SuiteScript 2.1
+  - Custom Suitelet
+  - Client Script
+  - Custom Records
+  - Custom Lists (SDF)
+  - N/record (Dynamic Mode)
+  - N/search
+  - N/ui/serverWidget
+  - OneWorld Subsidiary Lookup
+  - Jest (25 Unit Tests)
+  - SDF Deployment
+---
+
+<section class="mb-10">
+<h2 class="text-2xl font-bold text-primary mb-4 pb-2 border-b-2 border-gray-200">The Challenge</h2>
+<p class="mb-4">An industrial equipment company tracked all repair operations on paper forms and whiteboards. Staff had no visibility into repair status, billing was delayed, and boards were occasionally lost in the process.</p>
+
+<div class="bg-white rounded-lg p-6 mb-4 shadow-sm border-l-4 border-red-400">
+    <h4 class="font-bold text-primary mb-2">Paper-Based Tracking</h4>
+    <p>Equipment boards arrived for repair and were logged on paper forms. Status updates depended on physical location of the forms. When a technician was working on a board, the office had no visibility until the tech physically returned the paperwork.</p>
+</div>
+
+<div class="bg-white rounded-lg p-6 mb-4 shadow-sm border-l-4 border-red-400">
+    <h4 class="font-bold text-primary mb-2">Disconnected Billing</h4>
+    <p>Completed repairs required manual data entry to create Sales Orders in the ERP. Each board required looking up customer, board type, pricing, and repair details -- a process taking 10-15 minutes per board.</p>
+</div>
+
+<div class="bg-white rounded-lg p-6 mb-4 shadow-sm border-l-4 border-red-400">
+    <h4 class="font-bold text-primary mb-2">No Audit Trail</h4>
+    <p>There was no history of status changes, no record of who worked on what, and no way to measure repair throughput or turnaround time.</p>
+</div>
+</section>
+
+<section class="mb-10">
+<h2 class="text-2xl font-bold text-primary mb-4 pb-2 border-b-2 border-gray-200">The Solution</h2>
+<p class="mb-4">We built a unified multi-mode Suitelet that handles the entire repair lifecycle -- from intake to billing -- in a single custom application within NetSuite.</p>
+
+<div class="bg-white rounded-lg p-6 mb-4 shadow-sm border-l-4 border-accent">
+    <h4 class="font-bold text-primary mb-2">Mode 1: Equipment Intake (Entry)</h4>
+    <p>Staff log incoming boards with customer, EA number, board type, serial number, and well/location. The system automatically assigns a "Received" status and timestamps the entry.</p>
+</div>
+
+<div class="bg-white rounded-lg p-6 mb-4 shadow-sm border-l-4 border-accent">
+    <h4 class="font-bold text-primary mb-2">Mode 2: Repair Management</h4>
+    <p>Technicians and managers update status (Received, In Evaluation, Repair in Progress, Complete), add problem descriptions, repair notes, and set the outcome (Repaired - Billable vs. Not Repairable - No Charge).</p>
+</div>
+
+<div class="bg-white rounded-lg p-6 mb-4 shadow-sm border-l-4 border-accent">
+    <h4 class="font-bold text-primary mb-2">Mode 3: Billing & Sales Order Creation</h4>
+    <p>Office staff filter completed boards by customer, select billable items via checkboxes, and create Sales Orders with a single click. Line items automatically include the correct item, pricing, department, location, and detailed descriptions with EA numbers, serial numbers, and repair notes.</p>
+</div>
+
+<div class="my-6">
+    <a href="/portfolio/suitelet-board-repair-tracking/demo.html" class="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-purple-600 to-purple-800 text-white font-bold rounded-lg hover:opacity-90 transition-opacity">
+        View Interactive Demo
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+        </svg>
+    </a>
+</div>
+</section>
+
+<section class="mb-10">
+<h2 class="text-2xl font-bold text-primary mb-4 pb-2 border-b-2 border-gray-200">Technical Architecture</h2>
+
+<div class="bg-gray-900 text-blue-300 p-5 rounded-lg font-mono text-sm overflow-x-auto whitespace-pre my-4">        Suitelet (1,256 lines)
+            |
+    +-------+-------+--------+
+    |       |       |        |
+  Entry   Manage  Billing   Tech
+  Mode    Mode    Mode      View
+    |       |       |        |
+    v       v       v        v
+ Create   Update   Create   Update
+ Record   Status     SO     Status
+    |       |       |     + Notes
+    +-------+-------+--------+
+            |
+     Custom Record
+   (11 fields, 4 statuses)
+            |
+     +------+------+
+     |             |
+  Status List   Outcome List
+  (4 values)    (2 values)</div>
+
+<h3 class="text-xl font-semibold text-primary-light mt-6 mb-3">Key Technical Decisions</h3>
+<table class="w-full text-sm my-4">
+    <thead>
+        <tr class="bg-gray-100">
+            <th class="p-3 text-left font-semibold text-primary-light border-b-2 border-gray-200">Decision</th>
+            <th class="p-3 text-left font-semibold text-primary-light border-b-2 border-gray-200">Rationale</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr class="border-b border-gray-200">
+            <td class="p-3">Single Suitelet with mode parameter</td>
+            <td class="p-3">Reduced deployment complexity; shared configuration; single URL with different views</td>
+        </tr>
+        <tr class="border-b border-gray-200">
+            <td class="p-3">Custom Record instead of Item</td>
+            <td class="p-3">Repair tracking needs differ from inventory management; custom fields and statuses specific to repair workflow</td>
+        </tr>
+        <tr class="border-b border-gray-200">
+            <td class="p-3">SDF deployment for custom objects</td>
+            <td class="p-3">Version-controlled object definitions; repeatable sandbox-to-production promotion</td>
+        </tr>
+        <tr class="border-b border-gray-200">
+            <td class="p-3">Field order matters in SO line items</td>
+            <td class="p-3">Item must be set first (triggers pricing engine); description must be last (can be overwritten by item change)</td>
+        </tr>
+    </tbody>
+</table>
+
+<h3 class="text-xl font-semibold text-primary-light mt-6 mb-3">Sales Order Field Order (Critical)</h3>
+<div class="bg-gray-900 text-gray-200 p-5 rounded-lg font-mono text-sm overflow-x-auto my-4">
+<pre>// NetSuite requires specific field ordering for line items
+salesOrder.selectNewLine({ sublistId: 'item' });
+
+// 1. ITEM FIRST - triggers pricing engine
+salesOrder.setCurrentSublistValue({ sublistId: 'item',
+    fieldId: 'item', value: boardTypeId });
+
+// 2-7. Classification fields in order
+salesOrder.setCurrentSublistValue({ ..., fieldId: 'quantity', value: 1 });
+salesOrder.setCurrentSublistValue({ ..., fieldId: 'price', value: PRICE_LEVEL });
+salesOrder.setCurrentSublistValue({ ..., fieldId: 'department', value: DEPT });
+
+// 8. DESCRIPTION LAST - can be overwritten by item change
+salesOrder.setCurrentSublistValue({ ...,
+    fieldId: 'description', value: buildDescription(board) });
+
+salesOrder.commitLine({ sublistId: 'item' });</pre>
+</div>
+</section>
+
+<section class="mb-10">
+<h2 class="text-2xl font-bold text-primary mb-4 pb-2 border-b-2 border-gray-200">Value Delivered</h2>
+
+<div class="grid grid-cols-2 md:grid-cols-4 gap-4 my-6">
+    <div class="bg-white rounded-lg p-5 text-center shadow-sm border-t-4 border-accent">
+        <div class="text-3xl font-bold text-primary">100%</div>
+        <div class="text-xs text-gray-600 mt-1">Digital Tracking</div>
+    </div>
+    <div class="bg-white rounded-lg p-5 text-center shadow-sm border-t-4 border-accent">
+        <div class="text-3xl font-bold text-primary">80%</div>
+        <div class="text-xs text-gray-600 mt-1">Faster Billing</div>
+    </div>
+    <div class="bg-white rounded-lg p-5 text-center shadow-sm border-t-4 border-accent">
+        <div class="text-3xl font-bold text-primary">0</div>
+        <div class="text-xs text-gray-600 mt-1">Lost Boards</div>
+    </div>
+    <div class="bg-white rounded-lg p-5 text-center shadow-sm border-t-4 border-accent">
+        <div class="text-3xl font-bold text-primary">25</div>
+        <div class="text-xs text-gray-600 mt-1">Tests Passing</div>
+    </div>
+</div>
+
+<div class="bg-white rounded-lg p-6 mb-4 shadow-sm border-l-4 border-green-400">
+    <h4 class="font-bold text-primary mb-2">Operational Transformation</h4>
+    <ul class="list-disc pl-5 space-y-1">
+        <li>Complete visibility into repair status from any workstation</li>
+        <li>Automated SO creation reduced billing time from 10-15 minutes to under 1 minute per board</li>
+        <li>No more lost or misplaced repair paperwork</li>
+        <li>Technicians can update status independently via restricted view</li>
+        <li>Management sees real-time dashboard of boards by status</li>
+    </ul>
+</div>
+</section>

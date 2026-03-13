@@ -1,0 +1,181 @@
+---
+layout: layouts/case-study.njk
+title: Batch Transaction Search Tool
+tagline: A reusable Suitelet that searches 100+ transactions in seconds -- zero code changes for new transaction types
+description: Zero-code reusable transaction search delivering 60x faster lookups
+category: Suitelet
+industry: Wholesale / Apparel
+permalink: /portfolio/suitelet-transaction-lookup/
+tags: portfolio
+order: 8
+metrics:
+  - value: "100+"
+    label: "Transactions Per Search"
+  - value: "5/5"
+    label: "Reusability Score"
+  - value: "9.5 hrs"
+    label: "Total Dev Time"
+  - value: "0"
+    label: "Code Changes for New Types"
+techTags:
+  - SuiteScript 2.1
+  - Custom Suitelet
+  - N/search
+  - N/runtime
+  - Script Parameters
+  - HTML/CSS Rendering
+  - anyof Filter Operator
+---
+
+<section class="mb-10">
+<h2 class="text-2xl font-bold text-primary mb-4 pb-2 border-b-2 border-gray-200">The Challenge</h2>
+<p class="mb-4">An operations team at a wholesale apparel company needed to look up transaction details for 100+ document numbers at once. The existing workflow required manually entering values one-by-one into NetSuite's saved search filter UI.</p>
+
+<div class="bg-white rounded-lg p-6 mb-4 shadow-sm border-l-4 border-red-400">
+    <h4 class="font-bold text-primary mb-2">One-at-a-Time Lookups</h4>
+    <p>Looking up 100 item fulfillment document numbers required 100 individual searches. Each lookup took 30-60 seconds including navigation time. A batch of 100 took over an hour.</p>
+</div>
+
+<div class="bg-white rounded-lg p-6 mb-4 shadow-sm border-l-4 border-red-400">
+    <h4 class="font-bold text-primary mb-2">Multiple Transaction Types</h4>
+    <p>The same pattern was needed for item fulfillments, transfer orders, and sales orders. Building a separate tool for each type was wasteful.</p>
+</div>
+</section>
+
+<section class="mb-10">
+<h2 class="text-2xl font-bold text-primary mb-4 pb-2 border-b-2 border-gray-200">The Solution</h2>
+
+<div class="bg-white rounded-lg p-6 mb-4 shadow-sm border-l-4 border-accent">
+    <h4 class="font-bold text-primary mb-2">Paste, Search, Results</h4>
+    <p>Users paste up to 200 document numbers into a text area using any format (commas, spaces, newlines, OR-separated). Click Submit. Results appear in a table matching the saved search columns.</p>
+</div>
+
+<div class="bg-white rounded-lg p-6 mb-4 shadow-sm border-l-4 border-accent">
+    <h4 class="font-bold text-primary mb-2">Zero-Code Reusability</h4>
+    <p>A single Suitelet script serves every transaction type. Each deployment has script parameters pointing to a different saved search. Adding a new transaction type requires only: (1) a saved search exists, (2) create a deployment, (3) set parameters. No code changes.</p>
+</div>
+
+<div class="bg-white rounded-lg p-6 mb-4 shadow-sm border-l-4 border-accent">
+    <h4 class="font-bold text-primary mb-2">Admin-Maintainable Columns</h4>
+    <p>Column display is controlled by the saved search definition. Any NetSuite admin can add, remove, or reorder columns without touching code.</p>
+</div>
+
+<div class="my-6">
+    <a href="/portfolio/suitelet-transaction-lookup/demo.html" class="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-purple-600 to-purple-800 text-white font-bold rounded-lg hover:opacity-90 transition-opacity">
+        View Interactive Demo
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+        </svg>
+    </a>
+</div>
+</section>
+
+<section class="mb-10">
+<h2 class="text-2xl font-bold text-primary mb-4 pb-2 border-b-2 border-gray-200">Technical Architecture</h2>
+
+<div class="bg-gray-900 text-blue-300 p-5 rounded-lg font-mono text-sm overflow-x-auto whitespace-pre my-4">    User pastes doc numbers (any format)
+                |
+                v
+        [Smart Input Parser]
+        Split on: commas, spaces, OR, newlines
+        Trim, deduplicate, validate
+                |
+                v
+        [Load Saved Search]
+        Script parameter: search ID
+        Dynamic filter: tranid anyof [values]
+                |
+                v
+        [Run Search + Render]
+        Column headers from search metadata
+        Results as professional HTML table
+        Not-found numbers highlighted
+                |
+                v
+        [Display to User]</div>
+
+<h3 class="text-xl font-semibold text-primary-light mt-6 mb-3">Script Parameter Architecture</h3>
+<table class="w-full text-sm my-4">
+    <thead>
+        <tr class="bg-gray-100">
+            <th class="p-3 text-left font-semibold text-primary-light border-b-2 border-gray-200">Parameter</th>
+            <th class="p-3 text-left font-semibold text-primary-light border-b-2 border-gray-200">Purpose</th>
+            <th class="p-3 text-left font-semibold text-primary-light border-b-2 border-gray-200">Example</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr class="border-b border-gray-200">
+            <td class="p-3">Saved Search ID</td>
+            <td class="p-3">Which search to load and filter</td>
+            <td class="p-3">customsearch4376</td>
+        </tr>
+        <tr class="border-b border-gray-200">
+            <td class="p-3">Transaction Type</td>
+            <td class="p-3">Display label for the UI</td>
+            <td class="p-3">Item Fulfillment</td>
+        </tr>
+        <tr class="border-b border-gray-200">
+            <td class="p-3">Page Title</td>
+            <td class="p-3">Browser title</td>
+            <td class="p-3">Wholesale IF Lookup</td>
+        </tr>
+        <tr class="border-b border-gray-200">
+            <td class="p-3">Document Field</td>
+            <td class="p-3">Which field to filter on</td>
+            <td class="p-3">tranid (default)</td>
+        </tr>
+    </tbody>
+</table>
+
+<h3 class="text-xl font-semibold text-primary-light mt-6 mb-3">Deployment Matrix</h3>
+<table class="w-full text-sm my-4">
+    <thead>
+        <tr class="bg-gray-100">
+            <th class="p-3 text-left font-semibold text-primary-light border-b-2 border-gray-200">Deployment</th>
+            <th class="p-3 text-left font-semibold text-primary-light border-b-2 border-gray-200">Transaction Type</th>
+            <th class="p-3 text-left font-semibold text-primary-light border-b-2 border-gray-200">Code Changes</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr class="border-b border-gray-200">
+            <td class="p-3">Deployment 1</td>
+            <td class="p-3">Item Fulfillment</td>
+            <td class="p-3">None (initial)</td>
+        </tr>
+        <tr class="border-b border-gray-200">
+            <td class="p-3">Deployment 2</td>
+            <td class="p-3">Transfer Order</td>
+            <td class="p-3">None (parameters only)</td>
+        </tr>
+        <tr class="border-b border-gray-200">
+            <td class="p-3">Deployment 3</td>
+            <td class="p-3">Sales Order</td>
+            <td class="p-3">None (parameters only)</td>
+        </tr>
+        <tr class="border-b border-gray-200">
+            <td class="p-3">Deployment N</td>
+            <td class="p-3">Any transaction type</td>
+            <td class="p-3">None (forever)</td>
+        </tr>
+    </tbody>
+</table>
+</section>
+
+<section class="mb-10">
+<h2 class="text-2xl font-bold text-primary mb-4 pb-2 border-b-2 border-gray-200">Value Delivered</h2>
+
+<div class="grid grid-cols-2 md:grid-cols-3 gap-4 my-6">
+    <div class="bg-white rounded-lg p-5 text-center shadow-sm border-t-4 border-accent">
+        <div class="text-3xl font-bold text-primary">60x</div>
+        <div class="text-xs text-gray-600 mt-1">Faster Than Manual Lookup</div>
+    </div>
+    <div class="bg-white rounded-lg p-5 text-center shadow-sm border-t-4 border-accent">
+        <div class="text-3xl font-bold text-primary">98.5%</div>
+        <div class="text-xs text-gray-600 mt-1">Governance Headroom</div>
+    </div>
+    <div class="bg-white rounded-lg p-5 text-center shadow-sm border-t-4 border-accent">
+        <div class="text-3xl font-bold text-primary">0</div>
+        <div class="text-xs text-gray-600 mt-1">Training Time Required</div>
+    </div>
+</div>
+</section>

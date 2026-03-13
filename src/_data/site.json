@@ -7,11 +7,12 @@
   "phone": "",
   "address": {
     "street": "",
-    "city": "Remote",
+    "city": "",
     "state": "",
     "zip": "",
-    "country": "USA"
+    "country": "United States"
   },
+  "location_display": "Serving Clients Nationwide",
   "social": {
   },
   "founder": {
