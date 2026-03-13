@@ -18,8 +18,45 @@
     <!-- Styles -->
     <link rel="stylesheet" href="/css/main.css">
 
-    <!-- Alpine.js for interactions -->
-    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3/dist/cdn.min.js"></script>
+    <!-- Alpine.js for interactions (self-hosted) -->
+    <script defer src="/js/alpine.min.js"></script>
+
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "Organization",
+          "name": "FlowSync Consulting",
+          "url": "https://flowsync-consulting-website.pages.dev",
+          "description": "NetSuite workflow automation and system integration consulting. We deliver measurable ROI through custom solutions with 100% user adoption.",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US"
+          },
+          "areaServed": {
+            "@type": "Country",
+            "name": "United States"
+          }
+        },
+        {
+          "@type": "ProfessionalService",
+          "name": "NetSuite Consulting Services",
+          "provider": {
+            "@type": "Organization",
+            "name": "FlowSync Consulting"
+          },
+          "serviceType": "NetSuite Workflow Automation and System Integration",
+          "description": "Custom NetSuite solutions including workflow automation, system integration, custom Suitelets, SuiteScript development, and process optimization.",
+          "areaServed": {
+            "@type": "Country",
+            "name": "United States"
+          }
+        }
+      ]
+    }
+    </script>
 </head>
 <body class="flex flex-col min-h-screen">
     {% include "partials/header.njk" %}
