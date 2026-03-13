@@ -3,7 +3,7 @@
   "url": "https://flowsyncconsulting.com",
   "tagline": "NetSuite Workflow Automation & Integration",
   "description": "FlowSync Consulting specializes in NetSuite workflow automation and system integration. We design custom solutions that reduce complexity, improve data accuracy, and let your team focus on strategy.",
-  "email": "ben@flowsyncconsulting.com",
+  "email": "",
   "phone": "",
   "address": {
     "street": "",
@@ -13,11 +13,9 @@
     "country": "USA"
   },
   "social": {
-    "linkedin": "https://www.linkedin.com/in/bensaralegui/",
-    "github": "https://github.com/bsara"
   },
   "founder": {
-    "name": "Ben Saralegui",
+    "name": "FlowSync Team",
     "title": "Principal Consultant"
   }
 }
