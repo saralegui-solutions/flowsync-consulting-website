@@ -4,7 +4,8 @@
   "description": "FlowSync Consulting - NetSuite workflow automation and integration",
   "scripts": {
     "start": "npx @11ty/eleventy --serve",
-    "build": "npx @11ty/eleventy",
+    "build": "./tailwindcss -i src/css/input.css -o _site/css/main.css --minify && npx @11ty/eleventy",
+    "build:eleventy": "npx @11ty/eleventy",
     "build:prod": "./tailwindcss -i src/css/input.css -o _site/css/main.css --minify && npx @11ty/eleventy"
   },
   "keywords": ["netsuite", "consulting", "workflow", "automation"],
