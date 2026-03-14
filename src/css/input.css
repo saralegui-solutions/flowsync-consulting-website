@@ -1,33 +1,73 @@
+/* Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700&family=Inter:wght@400;500&display=swap');
+
 @import "tailwindcss";
 
 /* Custom theme */
 @theme {
-  --color-primary: #1a365d;
-  --color-primary-light: #2c5282;
-  --color-primary-dark: #0d2137;
-  --color-accent: #4299e1;
-  --color-accent-light: #2c7bb6;
-  --color-accent-dark: #3182ce;
-  --color-success: #48bb78;
+  --color-primary: #145250;
+  --color-primary-medium: #1a6b68;
+  --color-primary-light: #e8f4f3;
+  --color-primary-dark: #0f3d3b;
+  --color-copper: #b86832;
+  --color-copper-dark: #8c4f26;
+  --color-copper-light: #f0d4a8;
+  --color-gold: #9a7b2e;
+  --color-bg-warm: #faf8f5;
+  --color-bg-sand: #f2ede5;
+  --color-bg-dark: #0f3d3b;
+  --color-text-primary: #1c2526;
+  --color-text-secondary: #4d5c5b;
+  --color-text-ondark: #f5f0ea;
+  --color-success: #2d6b4f;
+  --color-border: #d4cec4;
 }
 
 /* Custom utilities */
 @utility btn {
   @apply inline-block px-6 py-3 rounded-lg font-semibold transition-all duration-200;
+  font-family: 'Montserrat', 'Segoe UI', system-ui, sans-serif;
 }
 
 @utility btn-primary {
-  @apply bg-accent text-white hover:bg-accent-dark;
+  @apply bg-copper text-white hover:bg-copper-dark;
 }
 
 @utility btn-secondary {
-  @apply bg-gray-200 text-primary hover:bg-gray-300;
+  @apply bg-transparent border-2 border-white text-text-ondark hover:bg-white/10;
 }
 
 @utility section-title {
-  @apply text-3xl md:text-4xl font-bold text-primary mb-4;
+  @apply text-3xl md:text-4xl font-bold text-text-primary mb-4;
+  font-family: 'Montserrat', 'Segoe UI', system-ui, sans-serif;
 }
 
 @utility section-subtitle {
-  @apply text-lg md:text-xl text-gray-600 mb-8;
+  @apply text-lg md:text-xl text-text-secondary mb-8;
+}
+
+/* Display font utility */
+.font-display {
+  font-family: 'Montserrat', 'Segoe UI', system-ui, sans-serif;
+}
+
+/* Organic curve divider */
+.curve-divider {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  overflow: hidden;
+  line-height: 0;
+}
+
+.curve-divider svg {
+  position: relative;
+  display: block;
+  width: calc(100% + 1.3px);
+  height: 60px;
+}
+
+.curve-divider .shape-fill {
+  fill: var(--color-bg-warm);
 }
